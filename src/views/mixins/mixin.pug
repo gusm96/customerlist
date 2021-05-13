@@ -1,0 +1,9 @@
+mixin list(list)
+    div 
+        p
+            a(href=`/list/${list.id}`)=list.date
+        p=list.name
+        small [#{list.phNumber}]
+        small [#{list.account}] 
+        small [#{list.service}]
+        hr

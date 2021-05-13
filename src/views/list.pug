@@ -1,0 +1,9 @@
+extends layout.pug 
+
+block content
+    h1 날짜 | #{list.date} 
+    h1 고객명 | #{list.name}
+    h3 주소 | #{list.accout}
+    h3 전화번호 | #{list.phNumber}
+    h3 서비스 | #{list.service}
+    a(href=`/list/${list.id}/edit`) 수정하기

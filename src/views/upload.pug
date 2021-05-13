@@ -1,0 +1,12 @@
+extends layout.pug 
+
+block content 
+    if errorMessage 
+    span=errorMessage
+    form(method="POST") 
+        input(type="date", placeholder="날짜", name="date", required)
+        input(type="text", placeholder="고객명", name="name", required)
+        input(type="text", placeholder="주소", name="account", required)
+        input(type="text", placeholder="연락처", name="phNumber", required)
+        input(type="text", placeholder="서비스", name="service", required)
+        input(type="submit" value="제출")

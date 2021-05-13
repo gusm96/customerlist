@@ -1,0 +1,10 @@
+extends layout.pug
+include mixins/mixin
+
+block content 
+    a(href="/upload") 작성하기
+    h1 Home!!
+    each listInfo in lists
+        +list(listInfo)
+    else 
+        li 고객명단을 찾지 못했어요.
