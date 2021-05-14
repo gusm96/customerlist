@@ -5,7 +5,7 @@ const listSchema = new mongoose.Schema({
   name: { type: String, required: true },
   account: { type: String, required: true },
   phNumber: { type: String, required: true },
-  service: [{ type: String, required: true }],
+  service: [{ type: String, trim: true, required: true }],
 });
 const List = mongoose.model("List", listSchema);
 

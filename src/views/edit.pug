@@ -1,4 +1,10 @@
 extends layout.pug 
 
 block content 
-    h1 고객명단 수정
+    form(method="POST")
+        input(type="date", placeholder="날짜", name="date",value=list.date, required)
+        input(type="text", placeholder="고객명", name="name", value=list.name, required)
+        input(type="text", placeholder="주소", name="account",value=list.account, required)
+        input(type="text", placeholder="연락처", name="phNumber",value=list.phNumber, required)
+        input(type="text", placeholder="서비스", name="service",value=list.service.join(), required)
+        input(type="submit", value="수정완료")

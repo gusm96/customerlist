@@ -2,8 +2,13 @@ doctype html
 html(leng="ko")
     head 
         title Aufnaut | #{pageTitle}
+        link(rel="stylesheet" href="https://unpkg.com/mvp.css")
+        
     body 
-        h1 #{pageTitle}
-        div
-            a(href="/") 홈으로
-        block content
+        header
+            h1 #{pageTitle}
+            div
+                a(href="/") 고객명단
+                hr
+        main
+            block content

@@ -1,9 +1,7 @@
 mixin list(list)
     div 
-        p
-            a(href=`/list/${list.id}`)=list.date
-        p=list.name
-        small [#{list.phNumber}]
+        p=list.date
+        p 
+         a(href=`/list/${list.id}`) #{list.name} 님
         small [#{list.account}] 
-        small [#{list.service}]
         hr
