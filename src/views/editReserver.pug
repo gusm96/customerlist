@@ -1,0 +1,13 @@
+extends layout 
+
+block content
+    form(method="POST") 
+        input(type="date", placeholder="예약날짜", value=reserver.date, name="date", required)
+        input(type="text", placeholder="성함", value=reserver.name, name="name", required)
+        input(type="text", placeholder="전화번호", value=reserver.phNumber, name="phNumber", required)
+        input(type="text", placeholder="주문", value=reserver.menu.join(), name="menu", required)
+        input(type="text", placeholder="요청사항", value=reserver.order, name="order", required)        
+        input(type="submit", value="수정하기")
+        hr
+        li
+            a(href=`/reserver/${reserver.id}/delete`) 삭제하기

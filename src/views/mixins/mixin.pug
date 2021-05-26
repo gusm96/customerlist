@@ -1,7 +1,7 @@
 mixin list(list)
     div 
-        p=list.date
+        h3=list.date
         p 
          a(href=`/list/${list.id}`) #{list.name} 님
-        small [#{list.account}] 
+        small [#{list.address}] 
         hr

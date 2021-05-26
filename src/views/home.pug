@@ -1,9 +1,7 @@
 extends layout.pug
 include mixins/mixin
 
-block content 
-    div  
-        a(href="/upload") 작성하기
+block content     
     div
         each listInfo in lists
             +list(listInfo)

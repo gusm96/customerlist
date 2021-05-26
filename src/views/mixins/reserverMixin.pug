@@ -1,0 +1,10 @@
+mixin reserver(reserver)
+    div 
+        h3=reserver.date
+        p #{reserver.name} 님
+        p 전화번호: #{reserver.phNumber}
+        p [#{reserver.menu}]
+        p 요청사항: #{reserver.order}
+        li 
+            a(href=`/reserver/${reserver.id}`) 수정하기
+        hr

@@ -1,0 +1,9 @@
+extends layout.pug
+include mixins/reserverMixin
+
+block content 
+     div
+        each reserverInfo in reservers
+            +reserver(reserverInfo)
+        else 
+            li 예약명단을 찾지 못했어요.

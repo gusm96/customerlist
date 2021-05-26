@@ -6,9 +6,16 @@ html(leng="ko")
         
     body 
         header
-            h1 #{pageTitle}
-            div
+            h1 Aufnaut
+            li
                 a(href="/") 고객명단
+            li
+                a(href="/upload") 작성하기
+            li
+                a(href="/reserver") 예약명단
+            li
+                a(href="/reserver/reserve") 예약하기
                 hr
         main
+            h1 #{pageTitle}
             block content

@@ -2,8 +2,8 @@ extends layout.pug
 
 block content
     h3 날짜 | #{list.date} 
-    h3 고객명 | #{list.name} 님
-    h3 주소 | #{list.account}
+    h3 성함 | #{list.name} 님
+    h3 주소 | #{list.address}
     h3 전화번호 | #{list.phNumber}
     h3 서비스 | #{list.service}
     a(href=`/list/${list.id}/edit`) 수정하기
