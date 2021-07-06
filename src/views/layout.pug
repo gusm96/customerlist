@@ -7,15 +7,17 @@ html(leng="ko")
     body 
         header
             h1 Aufnaut
-            li
-                a(href="/") 고객명단
-            li
-                a(href="/upload") 작성하기
-            li
-                a(href="/reserver") 예약명단
-            li
-                a(href="/reserver/reserve") 예약하기
-                hr
+            h2 | #{pageTitle} |
+            hr
+            nav 
+                ul
+                    li
+                        a(href="/home") 고객명단
+                    li
+                        a(href="/upload") 작성하기
+                    li
+                        a(href="/reserver") 예약명단
+                    li
+                        a(href="/reserver/reserve") 예약하기
         main
-            h1 #{pageTitle}
             block content

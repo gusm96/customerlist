@@ -1,6 +1,9 @@
 import List from "./models/List";
 import Reservation from "./models/Reserve";
 
+export const getFront = (req, res) => {
+  return res.render("front", { pageTitle: "아우프나우트" });
+};
 export const getHome = async (req, res) => {
   const lists = await List.find({}).sort({ date: "desc" });
   return res.render("home", { pageTitle: "주문실수 명단", lists });
@@ -18,7 +21,7 @@ export const postUpload = async (req, res) => {
       phNumber,
       service: List.formatService(service),
     });
-    return res.redirect("/");
+    return res.redirect("/home");
   } catch (error) {
     return res.render("upload", {
       pageTitle: "작성하기",
@@ -59,11 +62,11 @@ export const postEdit = async (req, res) => {
 export const getDelete = async (req, res) => {
   const { id } = req.params;
   await List.findByIdAndDelete(id);
-  return res.redirect("/");
+  return res.redirect("/home");
 };
 
 export const getReserved = async (req, res) => {
-  const reservers = await Reservation.find({}).sort({ date: "desc" });
+  const reservers = await Reservation.find({});
   return res.render("reserved", { pageTitle: "예약명단", reservers });
 };
 
