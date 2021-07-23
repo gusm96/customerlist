@@ -1,4 +1,5 @@
 import List from "./models/List";
+import User from "./models/User";
 import Reservation from "./models/Reserve";
 
 export const getFront = (req, res) => {
@@ -7,6 +8,30 @@ export const getFront = (req, res) => {
 export const getHome = async (req, res) => {
   const lists = await List.find({}).sort({ date: "desc" });
   return res.render("home", { pageTitle: "주문실수 명단", lists });
+};
+export const getLogin = (req, res) => {
+  return res.render("login", { pagetitle: "로그인" });
+};
+export const postLogin = (req, res) => {
+  return res.redirect("/home");
+};
+export const getJoin = (req, res) => {
+  return res.render("join", { pageTitle: "회원가입" });
+};
+export const postJoin = async (req, res) => {
+  const { username, name, email, password, password2 } = req.body;
+  const user = await User.create({
+    username,
+    name,
+    email,
+    password,
+    password2,
+  });
+
+  return res.redirect("/login");
+};
+export const logout = (req, res) => {
+  return res.redirect("/");
 };
 export const getUpload = (req, res) => {
   return res.render("upload", { pageTitle: "작성하기" });

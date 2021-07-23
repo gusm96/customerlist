@@ -3,9 +3,10 @@ html(lang="ko")
         meta(charset="UTF-8")
         meta(http-equiv="X-UA-Compatible", content="IE=edge")
         meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        link(rel="stylesheet", href="https://unpkg.com/mvp.css")
         title=pageTitle
     body 
-        h1 Aufnaut 
-        button#login 로그인
-        button#join 회원가입
-            a(href="/join") 
+        main
+            h1 Aufnaut 
+            a#login(href="/login") 로그인
+            a#join(href="/join") 회원가입
