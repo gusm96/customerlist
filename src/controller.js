@@ -20,15 +20,21 @@ export const getJoin = (req, res) => {
 };
 export const postJoin = async (req, res) => {
   const { username, name, email, password, password2 } = req.body;
-  const user = await User.create({
-    username,
-    name,
-    email,
-    password,
-    password2,
-  });
-
-  return res.redirect("/login");
+  if (password === password2) {
+    console.log("Ok !!");
+    await User.create({
+      username,
+      name,
+      email,
+      password,
+    });
+    return res.redirect("/login");
+  } else {
+    return res.render("join", {
+      pageTitle: "회원가입",
+      errorMessage: "비밀번호가 일치하지 않습니다.",
+    });
+  }
 };
 export const logout = (req, res) => {
   return res.redirect("/");
