@@ -18,7 +18,7 @@ export const postLogin = async (req, res) => {
   console.log(req.body);
   const pageTitle = "로그인";
   // username과 password를 DB에서 확인 후 Login 할 수 있도록 설계.
-  const user = await User.findOne(username);
+  const user = await User.findOne({ username });
   if (!user) {
     return res.status(400).render("login", {
       pageTitle,
@@ -38,22 +38,22 @@ export const getJoin = (req, res) => {
   return res.render("join", { pageTitle: "회원가입" });
 };
 export const postJoin = async (req, res) => {
-  // const { username, name, email, password, password2 } = req.body;
-  // if (password === password2) {
-  //   console.log("Ok !!");
-  //   await User.create({
-  //     username,
-  //     name,
-  //     email,
-  //     password,
-  //   });
-  //   return res.redirect("/login");
-  // } else {
-  //   return res.render("join", {
-  //     pageTitle: "회원가입",
-  //     errorMessage: "비밀번호가 일치하지 않습니다.",
-  //   });
-  // }
+  const { username, name, email, password, password2 } = req.body;
+  if (password === password2) {
+    console.log("Ok !!");
+    await User.create({
+      username,
+      name,
+      email,
+      password,
+    });
+    return res.redirect("/login");
+  } else {
+    return res.render("join", {
+      pageTitle: "회원가입",
+      errorMessage: "비밀번호가 일치하지 않습니다.",
+    });
+  }
 };
 export const logout = (req, res) => {
   return res.redirect("/");

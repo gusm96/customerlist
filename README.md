@@ -22,3 +22,8 @@
 
 - User password를 hashing 해야함.
 - join / login 작업 마무리해야함.
+
+### 21.08.10 기록
+
+- password hashing 기능 추가.
+- Login 기능 작업 마무리 필요.
