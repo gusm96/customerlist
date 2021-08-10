@@ -1,6 +1,7 @@
 import List from "./models/List";
 import User from "./models/User";
 import Reservation from "./models/Reserve";
+import bcrypt from "bcrypt";
 
 export const getFront = (req, res) => {
   return res.render("front", { pageTitle: "아우프나우트" });
@@ -12,29 +13,47 @@ export const getHome = async (req, res) => {
 export const getLogin = (req, res) => {
   return res.render("login", { pagetitle: "로그인" });
 };
-export const postLogin = (req, res) => {
+export const postLogin = async (req, res) => {
+  const { username, password } = req.body;
+  console.log(req.body);
+  const pageTitle = "로그인";
+  // username과 password를 DB에서 확인 후 Login 할 수 있도록 설계.
+  const user = await User.findOne(username);
+  if (!user) {
+    return res.status(400).render("login", {
+      pageTitle,
+      errorMessage: "존재하지 않는 계정입니다.",
+    });
+  }
+  const ok = await bcrypt.compare(password, user.password);
+  if (!ok) {
+    return res.status(400).render("login", {
+      pageTitle,
+      errorMessage: "비밀번호가 틀립니다.",
+    });
+  }
   return res.redirect("/home");
 };
 export const getJoin = (req, res) => {
   return res.render("join", { pageTitle: "회원가입" });
 };
 export const postJoin = async (req, res) => {
-  const { username, name, email, password, password2 } = req.body;
-  if (password === password2) {
-    console.log("Ok !!");
-    await User.create({
-      username,
-      name,
-      email,
-      password,
-    });
-    return res.redirect("/login");
-  } else {
-    return res.render("join", {
-      pageTitle: "회원가입",
-      errorMessage: "비밀번호가 일치하지 않습니다.",
-    });
-  }
+  // const { username, name, email, password, password2 } = req.body;
+  // if (password === password2) {
+  //   console.log("Ok !!");
+  //   await User.create({
+  //     username,
+  //     name,
+  //     email,
+  //     password,
+  //   });
+  //   return res.redirect("/login");
+  // } else {
+  //   return res.render("join", {
+  //     pageTitle: "회원가입",
+  //     errorMessage: "비밀번호가 일치하지 않습니다.",
+  //   });
+  // }
 };
 export const logout = (req, res) => {
   return res.redirect("/");
